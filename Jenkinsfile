@@ -1,4 +1,4 @@
-pipeline{  
+pipeline{
   environment {
     registry = "bhavya00/nodejs-app"
     registryCredential = 'dockerhub'
@@ -10,8 +10,8 @@ pipeline{
            steps{
               script{
                 sh 'npm install'
-              } 
-           }   
+              }
+           }
         }        stage('Building image') {
             steps{
                 script {
@@ -22,15 +22,15 @@ pipeline{
           stage('Push Image') {
               steps{
                   script {
-                       docker.withRegistry( '', registryCredential){                            
+                       docker.withRegistry( '', registryCredential){
                        dockerImage.push()
-                      }
+                      
                    }
-                } 
+                }
            }
            stage('Deploying into k8s'){
             steps{
-                sh 'kubectl apply -f deployment.yaml' 
+                sh 'kubectl apply -f deployment.yaml'
             }
         }
     }
