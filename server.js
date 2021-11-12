@@ -2,7 +2,7 @@ const express = require('express');
 const PORT = 8000;
 const app = express();
 app.get('/', (req, res) => {
-  res.send('THIS IS A NEW COMMIT!');
+  res.send('Hello World! A new commit.');
 });
 app.listen(PORT);
 console.log(`Running on ${PORT}`);
