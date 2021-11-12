@@ -30,9 +30,15 @@ pipeline{
                 }
            }
            stage('Deploying into k8s'){
-            steps{
-                sh 'kubectl apply -f deployment.yaml'
+               steps{
+                   withKubeConfig(caCertificate: '', clusterName: 'minikube', contextName: 'minikube', credentialsId: 'jenkins-token', namespace: 'default',
+                   serverUrl: 'https://192.168.49.2:8443') {
+                        sh 'kubectl apply -f deployment.yaml'
+                                                            }
+                }
+                
+                
             }
-        }
+        
     }
 }
