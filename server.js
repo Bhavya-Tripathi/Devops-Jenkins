@@ -2,7 +2,7 @@ const express = require('express');
 const PORT = 8000;
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello World! A new commit was made! It should trigger a Jenkins Build!');
+  res.send('Assignment 1 was successful!');
 });
 app.listen(PORT);
 console.log(`Running on ${PORT}`);
